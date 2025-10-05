@@ -25,6 +25,7 @@
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
       {{- partial "post_canonical.html" . -}}
+      <a href="#comments"><hyvor-talk-comment-count page-id="{{.Params.Slug}}"></hyvor-talk-comment-count></a>
     </div>
     {{- end }}
   </header>
@@ -55,7 +56,23 @@
     {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
     {{- partial "share_icons.html" . -}}
     {{- end }}
-  </footer>
+    <div>
+      <div id="comments" class="post-footer-section">Comments</div>
+      <script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
+      <hyvor-talk-comments website-id="906" page-id="{{.Params.Slug}}"></hyvor-talk-comments>
+    </div>
+    <script src="https://talk.hyvor.com/embed/comment-counts.js"></script>
+    <script>
+      hyvorTalkCommentCounts.load({
+        "mode": "number",
+        "website-id": 906
+      },
+      function(count, el) {
+        return count == 0 ? "" :
+          `&nbsp;·&nbsp;<i class="fa fa-comment"></i> ${count} ${count == 1 ? "Comment" : "Comments"}`
+      })
+    </script>
+  </footer> 
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
