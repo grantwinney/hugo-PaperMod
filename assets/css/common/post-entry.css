@@ -60,9 +60,9 @@
     border-color: var(--tertiary);
 }
 
-.tag-entry .entry-cover {
+/* .tag-entry .entry-cover {
     display: none;
-}
+} */
 
 .entry-header h2 {
     font-size: 24px;
