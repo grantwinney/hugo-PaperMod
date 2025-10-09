@@ -4,7 +4,7 @@
     {{- $loading := cond $.IsSingle "eager" "lazy" }}
     {{- $addLink := (and site.Params.cover.linkFullImages $.IsSingle) }}
     {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-    {{- $alt := (.Params.postimagealt | .Params.cover.alt | default .Params.cover.caption | plainify) }}
+    {{- $alt := (.Params.postimagealt | default .Params.cover.alt | default .Params.cover.caption | plainify) }}
     {{- $responsiveImages := (.Params.cover.responsiveImages | default site.Params.cover.responsiveImages) | default true }}
 
     {{- $pageBundleCover := (.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.postimage)) }}
@@ -50,7 +50,7 @@
 
     {{- /*  Display Caption  */}}
     {{- if $.IsSingle }}
-        {{ with .Params.cover.caption -}}
+        {{ with .Params.postimagecaption -}}
             <figcaption>{{ . | markdownify }}</figcaption>
         {{- end }}
     {{- end }}
