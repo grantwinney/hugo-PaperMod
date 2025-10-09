@@ -51,7 +51,7 @@
     {{- /*  Display Caption  */}}
     {{- if $.IsSingle }}
         {{ with .Params.postimagecaption -}}
-            <figcaption>{{ . }}</figcaption>
+            <figcaption>{{ . | markdownify }}</figcaption>
         {{- end }}
     {{- end }}
 </figure>
