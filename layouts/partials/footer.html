@@ -4,7 +4,7 @@
         {{- if site.Copyright }}
         <span>{{ site.Copyright | markdownify }}</span>
         {{- else }}
-        <span>&copy; 2013 - {{ now.Year }} <a href="{{ "" | absLangURL "/read-me" }}">{{ site.Title }}</a></span>
+        <span>&copy; 2013 - {{ now.Year }} <a href="{{ "readme" | absLangURL }}">{{ site.Title }}</a></span>
         {{- end }}
         {{- print " · "}}
     {{- end }}
